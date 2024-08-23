@@ -18,7 +18,7 @@ class Announcement
         string $title,
         string $description,
         string $promocionalPrice,
-        $status
+        bool $status
     ){
         $this->idAnuncio = $idAnuncio;
         $this->product = $product;
@@ -78,12 +78,12 @@ class Announcement
         $this->promocionaPrice = (string) $this->promocionalPrice;
     }
 
-    public function getStatus(): string
+    public function getStatus(): bool
     {
         return $this->status;
     }
 
-    public function setStatus(string $status): void
+    public function setStatus(bool $status): void
     {
         $this->status = $status;
     }

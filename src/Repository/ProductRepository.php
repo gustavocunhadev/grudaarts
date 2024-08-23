@@ -1,13 +1,5 @@
 <?php
 
-/**
-add
-read
-delete
-update
-find
- */
-
 namespace Grudaarts\Mvc\Repository;
 
 use Grudaarts\Mvc\Entity\Product;
@@ -41,11 +33,11 @@ class ProductRepository
     }
 
 
-    public function deleteProduct(Product $product): bool
+    public function deleteProduct(int $id): bool
     {
-        $sql = "DELETE FROM product WHERE $product->id = ?;";
+        $sql = "DELETE FROM product WHERE id = :id;";
         $statement = $this->pdo->prepare($sql);
-        $statement->bindValue(1, $product->getId());
+        $statement->bindValue(':id', $id);
         $result = $statement->execute();
 
         return $result;
