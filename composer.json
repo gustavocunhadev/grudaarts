@@ -1,0 +1,20 @@
+{
+    "name": "gustavocunhadev/gruda-arts",
+    "description": "E-commerce em PHP",
+    "type": "project",
+    "authors": [
+        {
+            "name": "gustavocunhadev",
+            "email": "gustavo_cjsp@hotmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Grudaarts\\Mvc\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">8.1",
+        "ext-pdo": "*"
+    }
+}
