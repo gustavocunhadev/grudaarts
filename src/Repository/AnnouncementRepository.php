@@ -1,4 +1,4 @@
-<?
+<?php
 
 namespace Grudaarts\Mvc\Repository;
 
@@ -13,7 +13,7 @@ class AnnouncementRepository
 
     public function addAnnouncement(Announcement $announcement): bool
     {
-        $sql = "INSERT INTO announcement(
+        $sql = "INSERT INTO ANNOUNCEMENT(
         idAnuncio,
         product,
         title,
@@ -41,7 +41,7 @@ class AnnouncementRepository
 
     public function deleteAnnouncement(int $id): bool
     {
-        $sql = "DELETE FROM announcement WHERE id = :id;";
+        $sql = "DELETE FROM ANNOUNCEMENT WHERE id = :id;";
         $statement = $this->pdo->prepare($sql);
         $statement->bindValue(':id', $id);
         $result = $statement->execute();
@@ -51,7 +51,7 @@ class AnnouncementRepository
 
     public function updateAnnouncement(Announcement $announcement): bool
     {
-        $sql = "UPDATE announcement SET
+        $sql = "UPDATE ANNOUNCEMENT SET
                                     product = :product,
                                     title = :title,
                                     description = :description,
@@ -73,7 +73,7 @@ class AnnouncementRepository
 
     public function all(): array
     {
-        $sql = "SELECT * FROM announcement;";
+        $sql = "SELECT * FROM ANNOUNCEMENT;";
         $statement = $this->pdo->prepare($sql);
         $statement->execute();
         $announcements = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -83,7 +83,7 @@ class AnnouncementRepository
 
     public function find(int $id): Announcement
     {
-        $sql = "SELECT * FROM announcement WHERE id = :id;";
+        $sql = "SELECT * FROM ANNOUNCEMENT WHERE id = :id;";
         $statement = $this->pdo->prepare($sql);
         $statement->bindValue(':id', $id);
         $statement->execute();

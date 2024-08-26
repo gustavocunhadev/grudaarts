@@ -1,0 +1,35 @@
+CREATE TABLE PRODUCT (
+    id INT AUTO_INCREMENT,
+    name VARCHAR(50) NOT NULL,
+    description VARCHAR(50) NOT NULL,
+    price VARCHAR(50) NOT NULL,
+    category VARCHAR(50) NOT NULL,
+    qntStock INT NOT NULL,
+    PRIMARY KEY(id)
+)ENGINE=InnoDB;
+
+
+CREATE TABLE ANNOUNCEMENT(
+    idAnuncio INT AUTO_INCREMENT,
+    idproduct INT,
+    title VARCHAR(50),
+    description VARCHAR(50),
+    promocionalPrice VARCHAR(50),
+    status BOOLEAN,
+
+    PRIMARY KEY (idAnuncio),
+    FOREIGN KEY (idproduct) REFERENCES PRODUCT(id)
+)ENGINE=InnoDB;
+
+
+INSERT INTO PRODUCT (name, description, price, category, qntStock) 
+VALUES('Galáxia Nova', 'Uma bela galáxia', '4.80', 'Stickers', 5);
+
+INSERT INTO ANNOUNCEMENT (idproduct, title, description, promocionalPrice, status)
+VALUES (1, 'Kit Galáxia nova', 'Kit de Sticker Galáxia Nova', '4.30', 1);
+
+
+SELECT PRODUCT.name, ANNOUNCEMENT.title
+FROM PRODUCT
+LEFT JOIN ANNOUNCEMENT
+ON PRODUCT.id = ANNOUNCEMENT.idproduct;
