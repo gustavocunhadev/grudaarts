@@ -42,7 +42,7 @@ class AnnouncementRepository
 
     public function deleteAnnouncement(int $id): bool
     {
-        $sql = "DELETE FROM ANNOUNCEMENT WHERE id = :id;";
+        $sql = "DELETE FROM ANNOUNCEMENT WHERE idAnuncio = :id;";
         $statement = $this->pdo->prepare($sql);
         $statement->bindValue(':id', $id);
         $result = $statement->execute();
@@ -78,7 +78,7 @@ class AnnouncementRepository
         $sql = "SELECT PRODUCT.id, PRODUCT.name, PRODUCT.description, PRODUCT.price, PRODUCT.category, PRODUCT.qntStock,
                        ANNOUNCEMENT.idAnuncio, ANNOUNCEMENT.title, ANNOUNCEMENT.description, ANNOUNCEMENT.promocionalPrice, ANNOUNCEMENT.status 
                         FROM PRODUCT
-                        LEFT JOIN ANNOUNCEMENT
+                        RIGHT JOIN ANNOUNCEMENT
                         ON PRODUCT.id = ANNOUNCEMENT.idproduct;";
         $statement = $this->pdo->prepare($sql);
         $statement->execute();
