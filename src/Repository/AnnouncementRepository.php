@@ -3,6 +3,7 @@
 namespace Grudaarts\Mvc\Repository;
 
 use Grudaarts\Mvc\Entity\Announcement;
+use Grudaarts\Mvc\Entity\Product;
 use PDO;
 
 class AnnouncementRepository
@@ -73,13 +74,50 @@ class AnnouncementRepository
 
     public function all(): array
     {
-        $sql = "SELECT * FROM ANNOUNCEMENT;";
+
+        $sql = "SELECT PRODUCT.id, PRODUCT.name, PRODUCT.description, PRODUCT.price, PRODUCT.category, PRODUCT.qntStock,
+                       ANNOUNCEMENT.idAnuncio, ANNOUNCEMENT.title, ANNOUNCEMENT.description, ANNOUNCEMENT.promocionalPrice, ANNOUNCEMENT.status 
+                        FROM PRODUCT
+                        LEFT JOIN ANNOUNCEMENT
+                        ON PRODUCT.id = ANNOUNCEMENT.idproduct;";
         $statement = $this->pdo->prepare($sql);
         $statement->execute();
-        $announcements = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $announcements = $statement->fetchAll(PDO::FETCH_NAMED);
 
-        return $announcements;
+
+        return array_map(
+            $this->hydrate(...),
+            $announcements
+        );
     }
+
+    public function hydrate(array $announcementData): Announcement
+    {
+
+        $product = new Product(
+            $announcementData["name"],
+            $announcementData["description"][0],
+            $announcementData["price"],
+            $announcementData["category"],
+            $announcementData["qntStock"]
+        );
+        $product->setId($announcementData["id"]);
+
+
+        $announcement = new Announcement(
+            $product,
+            $announcementData["title"],
+            $announcementData["description"][1],
+            $announcementData["promocionalPrice"],
+            $announcementData["status"]    
+         );
+         $announcement->setIdAnuncio($announcementData['idAnuncio']);
+         
+         return $announcement;
+
+    }
+
+
 
     public function find(int $id): Announcement
     {
@@ -91,5 +129,5 @@ class AnnouncementRepository
 
         return $announcement;
     }
-
+        
 }

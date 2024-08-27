@@ -13,14 +13,12 @@ class Announcement
     private $status;
 
     public function __construct(
-        int $idAnuncio,
         Product $product,
         string $title,
         string $description,
         string $promocionalPrice,
         bool $status
     ){
-        $this->idAnuncio = $idAnuncio;
         $this->product = $product;
         $this->title = $title;
         $this->description = $description;

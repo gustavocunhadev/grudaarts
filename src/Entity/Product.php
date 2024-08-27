@@ -16,14 +16,12 @@ class Product
     private int $qntStock;
 
     public function __construct(
-        int $id,
         string $name,
         string $description,
         string $price,
         string $category,
         int $qntStock
     ){
-        $this->id = $id;
         $this->name = $name;
         $this->description = $description;
         $this->price = $price;
