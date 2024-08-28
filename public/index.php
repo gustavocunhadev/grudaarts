@@ -5,7 +5,9 @@ declare(strict_types=1);
 use Grudaarts\Mvc\Controller\{
     AnnouncementListController,
     LoginController,
-    Error404Controller
+    Error404Controller,
+    AddAnnouncementController,
+    AddProductController
 };
 
 use Grudaarts\Mvc\Repository\AnnouncementRepository;
