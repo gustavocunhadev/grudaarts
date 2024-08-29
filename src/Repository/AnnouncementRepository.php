@@ -15,14 +15,12 @@ class AnnouncementRepository
     public function addAnnouncement(Announcement $announcement): bool
     {
         $sql = "INSERT INTO ANNOUNCEMENT(
-        idAnuncio,
-        product,
+        idproduct,
         title,
         description,
         promocionalPrice,
         status
         ) VALUES (
-        :idAnuncio,
         :product,
         :title,
         :description,
@@ -30,8 +28,8 @@ class AnnouncementRepository
         :status);";
 
         $statement = $this->pdo->prepare($sql);
-        $statement->bindValue(':idAnuncio', $announcement->getIdAnuncio());
-        $statement->bindValue(':product', $announcement->getProduct());
+       
+        $statement->bindValue(':product', $announcement->getProduct()->getId());
         $statement->bindValue(':title', $announcement->getTitle());
         $statement->bindValue(':description', $announcement->getDescription());
         $statement->bindValue(':promocionalPrice', $announcement->getPromocionalPrice());

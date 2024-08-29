@@ -1,0 +1,44 @@
+.announcement-block-container{
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+ 
+    justify-content: center;
+
+  
+}
+
+.announcement-block-container:hover{
+    transition: 1s;
+    box-shadow: 10px 10px 8px rgba(0, 0, 0, 0.4);
+}
+
+.announcement-block-img{
+    align-self: center;
+    padding: 40px;
+    margin-bottom: 15px;
+}
+
+.announcement-block-info{
+    align-items: start;
+    padding: 10px;
+}
+
+.announcement-block-category{
+    color: grey;
+    font-size: 14px; 
+}
+
+.announcement-block-title{
+    color:cadetblue;
+    font-size: 28px;
+}
+
+.announcement-block-stars{
+    color: yellow;
+}
+
+.announcement-block-price{
+    font-weight: 700;
+    font-size: 20px;
+}

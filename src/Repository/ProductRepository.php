@@ -14,7 +14,7 @@ class ProductRepository
     public function addProduct(Product $product): bool
     {
 
-        $sql = "INSERT INTO product(
+        $sql = "INSERT INTO PRODUCT(
                                     name,
                                     description,
                                     price,
@@ -35,7 +35,7 @@ class ProductRepository
 
     public function deleteProduct(int $id): bool
     {
-        $sql = "DELETE FROM product WHERE id = :id;";
+        $sql = "DELETE FROM PRODUCT WHERE id = :id;";
         $statement = $this->pdo->prepare($sql);
         $statement->bindValue(':id', $id);
         $result = $statement->execute();
@@ -45,7 +45,7 @@ class ProductRepository
 
     public function updateProduct(Product $product): bool
     {
-        $sql = "UPDATE product SET
+        $sql = "UPDATE PRODUCT SET
                                 name = :name,
                                 description = :description,
                                 price = :price,
@@ -67,7 +67,7 @@ class ProductRepository
 
     public function all(): array
     {
-        $sql = "SELECT * FROM product";
+        $sql = "SELECT * FROM PRODUCT";
         $statement = $this->pdo->prepare($sql);
         $statement->execute();
         $products = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -78,12 +78,26 @@ class ProductRepository
     public function find(int $id): Product
     {
 
-        $sql = "SELECT * FROM product WHERE id = ?;";
+        $sql = "SELECT * FROM PRODUCT WHERE id = ?;";
         $statement = $this->pdo->prepare($sql);
         $statement->bindValue(1, $id);
         $statement->fetch(PDO::FETCH_ASSOC);
         $statement->execute();
-        $product = $statement->fetch(PDO::FETCH_ASSOC);
+        
+        return $this->hydrate($statement->fetch(PDO::FETCH_ASSOC));
+    }
+
+    public function hydrate(array $productData): Product
+    {
+
+        $product = new Product(
+            $productData["name"],
+            $productData["description"][0],
+            $productData["price"],
+            $productData["category"],
+            $productData["qntStock"]
+        );
+        $product->setId($productData["id"]);
 
         return $product;
     }

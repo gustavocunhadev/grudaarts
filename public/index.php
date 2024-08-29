@@ -17,7 +17,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 $pdo = new PDO("mysql:host=localhost:3306;dbname=grudaarts", 'root', 'gustavo@123');
 $announcementRepository = new AnnouncementRepository($pdo);
-// $productRepository = new ProductRepository($pdo);
+$productRepository = new ProductRepository($pdo);
 
 $routes = require_once __DIR__ . '/../config/routes.php';
 

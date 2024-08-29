@@ -1,5 +1,6 @@
 <?php require_once __DIR__ . '/inicio.php'; 
 /** @var \Grudaarts\Mvc\Entity\Announcement[] $announcementList */
+/** @var \Grudaarts\Mvc\Entity\Product[] $productList */
 ?>
 
 <div class="container">
@@ -11,7 +12,7 @@
 <table class="table">
 <h2>Tabela de Anúncios</h2>
 
-<a href="/add-announcement">Adicionar Anúncio</a>
+<a href="/add-announcement-form">Adicionar Anúncio</a>
 
 <thead>
     <tr>
@@ -49,7 +50,7 @@
 
 <table class="table">
 <h2>Tabela de Produtos</h2>
-<a href="/add-product">Adicionar Produto</a>
+<a href="/add-product-form">Adicionar Produto</a>
 
  <thead>
     <tr>
@@ -62,15 +63,15 @@
   </thead>
   <tbody>
 
-  <?php foreach ($announcementList as $announcement): ?>
+  <?php foreach ($productList as $product): ?>
     <tr>
-      <th scope="row"><?= $announcement->getProduct()->getId() ?></th>
-      <td><?= $announcement->getProduct()->getName() ?></td>
-      <td><?= $announcement->getProduct()->getDescription() ?></td>
-      <td><?= $announcement->getProduct()->getPrice() ?></td>
+      <th scope="row"><?= $product->getId() ?></th>
+      <td><?= $product->getName() ?></td>
+      <td><?= $product->getDescription() ?></td>
+      <td><?= $product->getPrice() ?></td>
         <td><div class="acoes_anuncios">
-            <a href="/delete-announcement?id=<?= $announcement->getIdAnuncio(); ?>" class="delete_button" >Delete</a>
-            <a href="/update-announcement?id=<?= $announcement->getIdAnuncio(); ?>" class="update_button">Atualizar</a>
+            <a href="/delete-announcement?id=<?= $product->getId(); ?>" class="delete_button" >Delete</a>
+            <a href="/update-announcement?id=<?= $product->getId(); ?>" class="update_button">Atualizar</a>
         </div></td>
     </tr>
     <?php endforeach; ?>
