@@ -5,8 +5,11 @@ declare(strict_types=1);
 namespace Grudaarts\Mvc\Controller;
 
 use Grudaarts\Mvc\Repository\AnnouncementRepository;
+use Grudaarts\Mvc\Repository\ProductRepository;
 
-class DeleteAnnouncementController
+use PDO;
+
+class DeleteProductController
 {
 
     public function __construct(private AnnouncementRepository $announcementRepository)
@@ -16,7 +19,11 @@ class DeleteAnnouncementController
     {
         $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 
-        $sucess = $this->announcementRepository->deleteAnnouncement($id);
+        $pdo = new PDO("mysql:host=localhost:3306;dbname=grudaarts", 'root', 'gustavo@123');
+
+        $productRepository = new ProductRepository($pdo);
+
+        $sucess = $productRepository->deleteProduct($id);
         if($sucess === false){
             header('Location: /seller?sucesso=0');
         }else{

@@ -51,7 +51,7 @@ class AnnouncementRepository
     public function updateAnnouncement(Announcement $announcement): bool
     {
         $sql = "UPDATE ANNOUNCEMENT SET
-                                    product = :product,
+                                    idProduct = :product,
                                     title = :title,
                                     description = :description,
                                     promocionalPrice = :promocionalPrice,
@@ -59,7 +59,7 @@ class AnnouncementRepository
                                     WHERE idAnuncio = :idAnuncio
                                         ;";
         $statement = $this->pdo->prepare($sql);
-        $statement->bindValue(':product', $announcement->getProduct());
+        $statement->bindValue(':product', $announcement->getProduct()->getId());
         $statement->bindValue(':title', $announcement->getTitle());
         $statement->bindValue(':description', $announcement->getDescription());
         $statement->bindValue(':promocionalPrice', $announcement->getPromocionalPrice());
@@ -119,11 +119,17 @@ class AnnouncementRepository
 
     public function find(int $id): Announcement
     {
-        $sql = "SELECT * FROM ANNOUNCEMENT WHERE id = :id;";
+        $sql = "SELECT PRODUCT.id, PRODUCT.name, PRODUCT.description, PRODUCT.price, PRODUCT.category, PRODUCT.qntStock,
+                ANNOUNCEMENT.idAnuncio, ANNOUNCEMENT.title, ANNOUNCEMENT.description, ANNOUNCEMENT.promocionalPrice, ANNOUNCEMENT.status 
+                FROM PRODUCT
+                RIGHT JOIN ANNOUNCEMENT
+                ON PRODUCT.id = ANNOUNCEMENT.idproduct;
+                WHERE idAnuncio = :id";
         $statement = $this->pdo->prepare($sql);
         $statement->bindValue(':id', $id);
         $statement->execute();
-        $announcement = $statement->fetch(PDO::FETCH_ASSOC);
+        
+        $announcement = $this->hydrate($statement->fetch(PDO::FETCH_NAMED));
 
         return $announcement;
     }

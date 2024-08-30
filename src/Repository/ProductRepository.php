@@ -78,9 +78,9 @@ class ProductRepository
     public function find(int $id): Product
     {
 
-        $sql = "SELECT * FROM PRODUCT WHERE id = ?;";
+        $sql = "SELECT * FROM PRODUCT WHERE id = :id;";
         $statement = $this->pdo->prepare($sql);
-        $statement->bindValue(1, $id);
+        $statement->bindValue(':id', $id);
         $statement->fetch(PDO::FETCH_ASSOC);
         $statement->execute();
         

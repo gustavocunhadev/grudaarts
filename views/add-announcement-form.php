@@ -31,7 +31,7 @@
 
     <input type="radio" id="ativo" name="status" value=1>
     <label for="ativo">Ativo</label><br>
-    <input type="radio" id="inativo" name="status" value=1>
+    <input type="radio" id="inativo" name="status" value=0>
     <label for="inativo">Inativo</label><br>
 
     <input type="reset" value="Reset">
