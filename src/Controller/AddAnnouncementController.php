@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Grudaarts\Mvc\Controller;
 
+use Controller;
 use Grudaarts\Mvc\Repository\AnnouncementRepository;
 use Grudaarts\Mvc\Repository\ProductRepository;
 
@@ -11,7 +12,7 @@ use Grudaarts\Mvc\Entity\Product;
 use Grudaarts\Mvc\Entity\Announcement;
 use PDO;
 
-class AddAnnouncementController
+class AddAnnouncementController implements Controller
 {
 
     public function __construct(private AnnouncementRepository $announcementRepository)

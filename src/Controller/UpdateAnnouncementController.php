@@ -9,8 +9,9 @@ use Grudaarts\Mvc\Repository\ProductRepository;
 use Grudaarts\Mvc\Entity\Product;
 use Grudaarts\Mvc\Entity\Announcement;
 use PDO;
+use Controller;
 
-class UpdateAnnouncementController
+class UpdateAnnouncementController implements Controller
 {
 
     public function __construct(private AnnouncementRepository $announcementRepository)
@@ -25,8 +26,6 @@ class UpdateAnnouncementController
         $promocionalPrice = filter_input(INPUT_POST, 'promocionalPrice');
         $status = filter_input(INPUT_POST, 'status');
 
-        var_dump($idProduct);
-        exit();
 
         $pdo = new PDO("mysql:host=localhost:3306;dbname=grudaarts", 'root', 'gustavo@123');
 

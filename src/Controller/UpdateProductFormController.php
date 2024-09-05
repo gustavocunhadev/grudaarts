@@ -6,10 +6,10 @@ namespace Grudaarts\Mvc\Controller;
 
 use Grudaarts\Mvc\Repository\AnnouncementRepository;
 use Grudaarts\Mvc\Repository\ProductRepository;
-
+use Controller;
 use PDO;
 
-class UpdateProductFormController
+class UpdateProductFormController implements Controller
 {
 
     public function __construct(private AnnouncementRepository $announcementRepository)

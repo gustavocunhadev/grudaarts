@@ -5,8 +5,9 @@ declare(strict_types=1);
 namespace Grudaarts\Mvc\Controller;
 
 use Grudaarts\Mvc\Repository\AnnouncementRepository;
+use Controller;
 
-class AddProductFormController
+class AddProductFormController implements Controller
 {
 
     public function __construct(private AnnouncementRepository $announcementRepository)

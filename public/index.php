@@ -31,7 +31,7 @@ $key = "$httpMethod|$pathInfo";
 if (array_key_exists($key, $routes)) {
     $controllerClass = $routes["$httpMethod|$pathInfo"];
 
-    $controller = new $controllerClass($announcementRepository);
+    $controller = new $controllerClass($announcementRepository, $productRepository);
 } else {
     $controller = new Error404Controller();
 }

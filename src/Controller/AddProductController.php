@@ -8,8 +8,9 @@ use Grudaarts\Mvc\Repository\AnnouncementRepository;
 use Grudaarts\Mvc\Repository\ProductRepository;
 use Grudaarts\Mvc\Entity\Product;
 use PDO;
+use Controller;
 
-class AddProductController
+class AddProductController implements Controller
 {
 
     public function __construct(private AnnouncementRepository $announcementRepository)
