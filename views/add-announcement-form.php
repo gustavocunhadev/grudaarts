@@ -1,5 +1,6 @@
 <?php require_once __DIR__ . '/inicio.php';
 /** @var \Grudaarts\Mvc\Entity\Announcement[] $announcementList */
+/** @var \Grudaarts\Mvc\Entity\Product[] $productList */
 ?>
 
 <div class="container">
@@ -12,7 +13,7 @@
 
             <?php foreach ($announcementList as $announcement): ?>
                 <option value="<?= $announcement->getProduct()->getName() ?>">
-                <?php endforeach; ?>
+            <?php endforeach; ?>
 
         </datalist>
 

@@ -6,7 +6,7 @@ use Grudaarts\Mvc\Repository\AnnouncementRepository;
 use Grudaarts\Mvc\Repository\ProductRepository;
 
 use PDO;
-use Controller;
+
 
 class SellerController implements Controller
 {

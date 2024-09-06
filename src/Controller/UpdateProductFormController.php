@@ -6,7 +6,7 @@ namespace Grudaarts\Mvc\Controller;
 
 use Grudaarts\Mvc\Repository\AnnouncementRepository;
 use Grudaarts\Mvc\Repository\ProductRepository;
-use Controller;
+
 use PDO;
 
 class UpdateProductFormController implements Controller

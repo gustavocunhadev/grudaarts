@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 return [
     'GET|/' => Grudaarts\Mvc\Controller\AnnouncementListController::class,
-    'GET|/login' => Grudaarts\Mvc\Controller\LoginController::class,
     'GET|/seller' => Grudaarts\Mvc\Controller\SellerController::class,
     'GET|/delete-announcement' => Grudaarts\Mvc\Controller\DeleteAnnouncementController::class,
     'GET|/add-announcement-form' => Grudaarts\Mvc\Controller\AddAnnouncementFormController::class,
@@ -16,6 +15,8 @@ return [
     'POST|/update-product' => Grudaarts\Mvc\Controller\UpdateProductController::class,
     'GET|/update-announcement-form' => Grudaarts\Mvc\Controller\UpdateAnnouncementFormController::class,
     'POST|/update-announcement' => Grudaarts\Mvc\Controller\UpdateAnnouncementController::class,
-
-
+    'GET|/login' => Grudaarts\Mvc\Controller\LoginFormController::class,
+    'POST|/login' => Grudaarts\Mvc\Controller\LoginController::class,
+    'GET|/logout' => Grudaarts\Mvc\Controller\LogoutController::class,
+    
 ];

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Grudaarts\Mvc\Controller;
 
-use Controller;
 use Grudaarts\Mvc\Repository\AnnouncementRepository;
 use Grudaarts\Mvc\Repository\ProductRepository;
 

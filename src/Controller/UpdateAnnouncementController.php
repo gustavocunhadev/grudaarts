@@ -9,7 +9,6 @@ use Grudaarts\Mvc\Repository\ProductRepository;
 use Grudaarts\Mvc\Entity\Product;
 use Grudaarts\Mvc\Entity\Announcement;
 use PDO;
-use Controller;
 
 class UpdateAnnouncementController implements Controller
 {
@@ -25,7 +24,6 @@ class UpdateAnnouncementController implements Controller
         $description = filter_input(INPUT_POST, 'description');
         $promocionalPrice = filter_input(INPUT_POST, 'promocionalPrice');
         $status = filter_input(INPUT_POST, 'status');
-
 
         $pdo = new PDO("mysql:host=localhost:3306;dbname=grudaarts", 'root', 'gustavo@123');
 

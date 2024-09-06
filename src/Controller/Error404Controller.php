@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 namespace Grudaarts\Mvc\Controller;
-use Controller;
+
 
 class Error404Controller implements Controller
 {
